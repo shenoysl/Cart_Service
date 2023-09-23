@@ -19,7 +19,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 
-BASE_URL = "http://127.0.0.1:8001"
+BASE_URL = "https://shenoy-product-service.onrender.com"
 
 carts = {  1: [
         {
@@ -121,68 +121,7 @@ def remove_from_cart(user_id, product_id):
         
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='https://shenoy-cart-service.onrender.com')
 
 
 
-# def add_to_cart(user_id, product_id):
-#     products_response = get_products()
-#     for product in products_response:
-#             if product["id"] == product_id:
-#                 added = product
-#                 break
-#     if added in carts[user_id]:
-#         cart = get_user_cart(user_id)
-           
-#         product_updated = {
-#           #      "name": added["name"],
-#                 "quantity": request.json.get("quantity") + request.json.get("quantity"),
-#                 "total_price": added["price"] * request.json.get("quantity")
-#             }  
-#         cart.append(product_added)
-#         carts[user_id] = cart
-#         return jsonify({"message": "Added product to cart", "user_id": user_id, "cart": cart})
-#     else:
-#                 cart = carts.get(user_id, [])
-           
-#         product_added = {
-#           #      "name": added["name"],
-#                 "quantity": request.json.get("quantity") + request.json.get("quantity"),
-#                 "total_price": added["price"] * request.json.get("quantity")
-#             }  
-#         cart.append(product_added)
-#         carts[user_id] = cart
-#         return jsonify({"message": "Added product to cart", "user_id": user_id, "cart": cart})
-#         return jsonify({"error": "No product found"}), 404
-
-    #  # Default to 1 if quantity is not specified in the request
-
-
-
-# @app.route('/cart/<int:user_id>', methods=['GET'])
-# def get_user_cart(user_id):
-#     for cart in carts :
-#          if cart["userID"] == user_id:
-#                 return jsonify({"userID": user_id, "cart": cart})
-#          else:
-#             return jsonify({"error: No cart associated with this userID"}), 404
-
-
-
-
-    # quantity = request.json.get('quantity')
-    # product_info = get_product(product_id)
-    # if product_info is not None:
-    #         user_cart = get_cart_contents(user_id)
-    #         for in_cart in user_cart:
-    #             if in_cart["productName"] == product_info["name"]:
-    #                 in_cart["quantity"] -= quantity
-    #                 in_cart["totalPrice"] = in_cart["quantity"] * product_info["price"]
-    #                 if in_cart["quantity"] == 0:
-    #                     user_cart.remove(in_cart)
-    #                 carts[user_id] = user_cart
-    #                 return jsonify({"message": "User's cart updated after removal", "cart": user_cart}), 201
-    #             else:
-    #                 return jsonify({"error": "Product not found in user's cart"}), 404
-    # else:
-    #     return jsonify({"error": "Product not found in warehouse"}), 404
